@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eduassist.mapper.StudentKnowledgePointMapper">
+    <resultMap id="StudentKnowledgePointResultMap" type="com.eduassist.entity.StudentKnowledgePoint">
+        <id property="id" column="id"/>
+        <result property="studentId" column="student_id"/>
+        <result property="knowledgePointId" column="knowledge_point_id"/>
+        <result property="masteryLevel" column="mastery_level"/>
+    </resultMap>
+
+    <select id="findById" resultMap="StudentKnowledgePointResultMap">
+        SELECT * FROM student_knowledge_point WHERE id = #{id}
+    </select>
+
+    <select id="findByStudentId" resultMap="StudentKnowledgePointResultMap">
+        SELECT * FROM student_knowledge_point WHERE student_id = #{studentId}
+    </select>
+
+    <insert id="insert" parameterType="com.eduassist.entity.StudentKnowledgePoint" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO student_knowledge_point (student_id, knowledge_point_id, mastery_level)
+        VALUES (#{studentId}, #{knowledgePointId}, #{masteryLevel})
+    </insert>
+
+    <update id="update" parameterType="com.eduassist.entity.StudentKnowledgePoint">
+        UPDATE student_knowledge_point
+        SET student_id = #{studentId}, knowledge_point_id = #{knowledgePointId},
+            mastery_level = #{masteryLevel}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM student_knowledge_point WHERE id = #{id}
+    </delete>
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eduassist.mapper.QuestionMapper">
+    <resultMap id="QuestionResultMap" type="com.eduassist.entity.Question">
+        <id property="id" column="id"/>
+        <result property="homeworkId" column="homework_id"/>
+        <result property="questionText" column="question_text"/>
+        <result property="answer" column="answer"/>
+        <result property="score" column="score"/>
+    </resultMap>
+
+    <select id="findById" resultMap="QuestionResultMap">
+        SELECT * FROM question WHERE id = #{id}
+    </select>
+
+    <select id="findByHomeworkId" resultMap="QuestionResultMap">
+        SELECT * FROM question WHERE homework_id = #{homeworkId}
+    </select>
+
+    <insert id="insert" parameterType="com.eduassist.entity.Question" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO question (homework_id, question_text, answer, score)
+        VALUES (#{homeworkId}, #{questionText}, #{answer}, #{score})
+    </insert>
+
+    <update id="update" parameterType="com.eduassist.entity.Question">
+        UPDATE question
+        SET homework_id = #{homeworkId}, question_text = #{questionText},
+            answer = #{answer}, score = #{score}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM question WHERE id = #{id}
+    </delete>
+</mapper>

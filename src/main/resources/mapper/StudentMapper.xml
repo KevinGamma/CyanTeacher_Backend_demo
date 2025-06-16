@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eduassist.mapper.StudentMapper">
+    <resultMap id="StudentResultMap" type="com.eduassist.entity.Student">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="findById" resultMap="StudentResultMap">
+        SELECT * FROM student WHERE id = #{id}
+    </select>
+
+    <select id="findByUserId" resultMap="StudentResultMap">
+        SELECT * FROM student WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insert" parameterType="com.eduassist.entity.Student" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO student (user_id, name)
+        VALUES (#{userId}, #{name})
+    </insert>
+
+    <update id="update" parameterType="com.eduassist.entity.Student">
+        UPDATE student
+        SET user_id = #{userId}, name = #{name}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM student WHERE id = #{id}
+    </delete>
+</mapper>
