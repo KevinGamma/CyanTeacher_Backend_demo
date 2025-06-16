@@ -17,10 +17,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/public/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/").permitAll() // 允许匿名访问根路径
+                .anyRequest().authenticated() // 其他请求需要认证
                 .and()
-                .csrf().disable();
+                .csrf().disable(); // 根据需要禁用 CSRF
     }
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter() {
