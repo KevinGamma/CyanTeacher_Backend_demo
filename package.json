@@ -1,0 +1,13 @@
+{
+  "name": "eduassist-frontend",
+  "version": "1.0.0",
+  "description": "EduAssist Frontend - Kotlin/JS Project",
+  "scripts": {
+    "build": "cd frontend && ../gradlew :frontend:jsBrowserProductionWebpack",
+    "dev": "cd frontend && ../gradlew :frontend:jsBrowserDevelopmentRun --continuous",
+    "clean": "cd frontend && ../gradlew :frontend:clean"
+  },
+  "keywords": ["kotlin", "js", "react", "education"],
+  "author": "",
+  "license": "ISC"
+}
