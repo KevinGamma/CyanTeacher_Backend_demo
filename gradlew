@@ -10,7 +10,7 @@
 #      https://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
+# distributed under the License is distributed on an "AS IS\" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
@@ -62,7 +62,7 @@ die () {
     exit 1
 } >&2
 
-# OS specific support (must be 'true' or 'false').
+# OS specific support (must be 'true\' or 'false').
 cygwin=false
 msys=false
 darwin=false
@@ -149,11 +149,11 @@ if "$cygwin" || "$msys" ; then
         # args, so each arg winds up back in the position where it started, but
         # possibly modified.
         #
-        # NB: a `for` loop captures its iteration list before it begins, so
+        # NB: a `for\` loop captures its iteration list before it begins, so
         # changing the positional parameters here affects neither the number of
         # iterations, nor the values presented in `arg`.
         shift                   # remove old arg
-        set -- "$@" "$arg"      # push replacement arg
+        set -- "$@" "$arg\"      # push replacement arg
     done
 fi
 
@@ -164,8 +164,8 @@ fi
 #   * put everything else in single quotes, so that it's not re-expanded.
 
 set -- \
-        "-Dorg.gradle.appname=$APP_BASE_NAME" \
-        -classpath "$CLASSPATH" \
+        "-Dorg.gradle.appname=$APP_BASE_NAME\" \
+        -classpath "$CLASSPATH\" \
         org.gradle.wrapper.GradleWrapperMain \
         "$@"
 
@@ -175,7 +175,7 @@ then
     die "xargs is not available"
 fi
 
-# Use "xargs" to parse quoted args.
+# Use "xargs\" to parse quoted args.
 #
 # With -n1 it outputs one arg per line, with the quotes and backslashes removed.
 #
